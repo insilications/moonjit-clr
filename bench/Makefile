@@ -44,8 +44,8 @@ endif
 LUAJIT_A = ../src/$(FILE_A)
 
 $(BENCH_BIN): $(LUAJIT_A) $(BENCH_BIN).c Makefile
-	$(CC) $@.c -std=gnu11 $(DURATION) -g -O3 -c -o $@.o -I ../src
-	$(CC) $@.o -lpthread $< -lm -ldl -o $@
+	$(CC) $@.c -std=gnu11 $(CFLAGS) $(DURATION) -g -O3 -c -o $@.o -I ../src
+	$(CC) $@.o -lpthread $< $(LDFLAGS) -lm -ldl -o $@
 
 # Build the luajit static library if it doesn't exist.
 $(LUAJIT_A):
